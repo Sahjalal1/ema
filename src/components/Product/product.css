@@ -1,12 +1,14 @@
 .product{
-    width: 300px;
+    width: 90%;
     height: 510px;
+    margin-bottom: 20px;
     border: 1px solid #95A0A7;
     border-radius: 8px;
     position: relative;
+    
 }
 .product img{
-  width: 286px;  
+  width: 96%;  
   height: 286px; 
   margin: 7px;
   border-radius: 8px; 
