@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './Order.css'
 import Cart from '../components/Cart/Cart';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import ReviewItem from '../components/ReviewItem/ReviewItem';
-import { removeFromDb } from '../utilities/fakedb';
+import { deleteShoppingCart, removeFromDb } from '../utilities/fakedb';
 
 
 const Order = () => {
@@ -15,6 +15,10 @@ const Order = () => {
         setCart(remaining);
         removeFromDb(id)
     
+    }
+    const handleClearCart = () =>{
+        setCart([]);
+        deleteShoppingCart()
     }
     return (
         <div className='shop-container'>
@@ -29,7 +33,14 @@ const Order = () => {
             </div>
 
             <div className='cart-container'>
-                <Cart cart={cart}></Cart>
+                <Cart 
+                    cart={cart}
+                    handleClearCart={handleClearCart}
+                >
+                    <Link className='proceed-link' to="/checkout">
+                        <button className='btn-proceed'>Proceed Checkout</button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );
